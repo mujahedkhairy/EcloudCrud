@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%; /* Full width */
+            border-collapse: collapse; /* Combine borders */
+            margin-top: 20px; /* Space above the table */
+        }
+        th, td {
+            border: 1px solid #dddddd; /* Add border to cells */
+            text-align: left; /* Align text to the left */
+            padding: 15px; /* Add padding inside cells */
+        }
+        th {
+            background-color: #f2f2f2; /* Light grey background for header */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Light grey background for even rows */
+        }
+        a {
+            margin-right: 10px; /* Space between action links */
+        }
+    </style>
+</head>
+<body>
+    <h1>User List</h1>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+             <td>
+                {% if user.active %}
+                    Online
+                {% else %}
+                    Offline
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'update_user' user.id %}">Update</a>
+                <a href="{% url 'delete_user' user.id %}">Delete</a>
+                {% if user.active %}
+                <a href="{% url 'logout' user.id %}">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'create_user' %}">Create New User</a>
+
+</body>
+</html>

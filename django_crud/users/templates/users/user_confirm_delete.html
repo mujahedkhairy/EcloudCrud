@@ -1,0 +1,55 @@
+<!-- users/user_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Consistent font style */
+            margin: 20px; /* Space around the body */
+            padding: 20px; /* Padding for inner content */
+            border: 1px solid #dddddd; /* Add border */
+            border-radius: 8px; /* Rounded corners */
+            background-color: #f9f9f9; /* Light background color */
+        }
+        h1 {
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        p {
+            margin-bottom: 20px; /* Space below the paragraph */
+        }
+        button {
+            padding: 10px 15px; /* Padding for the button */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners for the button */
+            background-color: #ff4d4d; /* Red background for delete action */
+            color: white; /* White text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth background change on hover */
+        }
+        button:hover {
+            background-color: #cc0000; /* Darker red on hover */
+        }
+        a {
+            margin-left: 10px; /* Space between button and link */
+            text-decoration: none; /* Remove underline from link */
+            color: #007bff; /* Bootstrap primary color */
+            font-weight: bold; /* Bold text for links */
+        }
+        a:hover {
+            color: #0056b3; /* Darker color on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Confirm Delete User</h1>
+    <p>Are you sure you want to delete the user "{{ user.username }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+        <a href="{% url 'get_users' %}">Cancel</a>
+    </form>
+</body>
+</html>

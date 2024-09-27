@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create or Update User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Consistent font style */
+            margin: 20px; /* Space around the body */
+            padding: 20px; /* Padding for inner content */
+            border: 1px solid #dddddd; /* Add border */
+            border-radius: 8px; /* Rounded corners */
+            background-color: #f9f9f9; /* Light background color */
+        }
+        h1 {
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        form {
+            display: flex; /* Flexbox for better layout */
+            flex-direction: column; /* Stack elements vertically */
+        }
+        button {
+            margin-top: 15px; /* Space above the button */
+            padding: 10px 15px; /* Padding for the button */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners for the button */
+            background-color: #4CAF50; /* Green background for submit button */
+            color: white; /* White text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth background change on hover */
+        }
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Create / Update User</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

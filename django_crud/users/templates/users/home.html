@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif; /* Consistent font style */
+        margin: 20px; /* Space around the body */
+    }
+    h3 {
+        margin-bottom: 20px; /* Space below the heading */
+    }
+    ul {
+        list-style-type: none; /* Remove default list styling */
+        padding: 0; /* Remove padding */
+    }
+    li {
+        margin: 10px 0; /* Space between list items */
+        padding: 10px; /* Space inside list items */
+        border: 1px solid #dddddd; /* Add border */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s; /* Smooth background change on hover */
+    }
+    li:hover {
+        background-color: #f2f2f2; /* Change background on hover */
+    }
+    a {
+        text-decoration: none; /* Remove underline from links */
+        color: #007bff; /* Bootstrap primary color */
+        font-weight: bold; /* Bold text for links */
+    }
+    a:hover {
+        color: #0056b3; /* Darker color on hover */
+    }
+  </style>
+</head>
+<body>
+    <h3>Simple CRUD Operations Using Django</h3>
+    <ul>
+        <li><a href="{% url 'get_users' %}">View Users</a></li>
+        <li><a href="{% url 'create_user' %}">Create User</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+    </ul>
+</body>
+</html>
