@@ -21,11 +21,11 @@ This is a simple Flask CRUD application for managing users. The application allo
 Follow these steps to set up and run the application on your local machine:
 
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/repository-name.git
-   cd repository-name
-
+1. Create a virtual environment (optional but recommended):
+    ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate` 
+   
 2. Create a .env file in the root directory and add your secret key:
     SECRET_KEY=your_generated_secret_key
 

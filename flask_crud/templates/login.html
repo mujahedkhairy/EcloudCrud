@@ -1,7 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Consistent font style */
+            margin: 20px; /* Space around the body */
+            padding: 20px; /* Padding for inner content */
+            border: 1px solid #dddddd; /* Add border */
+            border-radius: 8px; /* Rounded corners */
+            background-color: #f9f9f9; /* Light background color */
+        }
+        h1 {
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        .alert {
+            padding: 10px; /* Padding for alert messages */
+            margin-bottom: 15px; /* Space below the alert */
+            border-radius: 5px; /* Rounded corners for alerts */
+        }
+        .alert.success {
+            background-color: #d4edda; /* Light green for success messages */
+            color: #155724; /* Dark green text */
+            border: 1px solid #c3e6cb; /* Darker green border */
+        }
+        .alert.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <h1>Login</h1>

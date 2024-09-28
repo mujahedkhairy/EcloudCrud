@@ -30,7 +30,7 @@ class UserCreateView(CreateView):
 
     def form_valid(self, form):
         user = form.save(commit=False)
-        user.password = form.cleaned_data['password']  # Directly store the password for testing
+        user.password = form.cleaned_data['password']
         user.save()
         messages.success(self.request, "User created successfully.")
         return super().form_valid(form)
@@ -47,7 +47,7 @@ class UserUpdateView(UpdateView):
         user = form.save(commit=False)
         # If a new password is provided, update it directly
         if form.cleaned_data['password']:
-            user.password = form.cleaned_data['password']  # Directly assign the password
+            user.password = form.cleaned_data['password']
         user.save()
         messages.success(self.request, "User updated successfully.")
         return super().form_valid(form)
@@ -74,11 +74,11 @@ class LoginView(FormView):
         password = form.cleaned_data.get('password')
         try:
             user = User.objects.get(username=username)
-            if user.password == password:  # Directly compare for testing
+            if user.password == password:
                 user.active = True  # Set user active status
                 user.save()  # Save the updated user status
                 messages.success(self.request, f"{user.username} logged in successfully.")
-                return redirect(self.get_success_url())  # Redirect to success URL
+                return redirect(self.get_success_url())
             else:
                 messages.error(self.request, "Incorrect password.")
         except User.DoesNotExist:

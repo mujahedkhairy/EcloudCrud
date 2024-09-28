@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, flash
 from db import db
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
@@ -11,16 +11,14 @@ load_dotenv()
 app = Flask(__name__)
 
 
-app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
 
-
 from models import User
-
 
 
 with app.app_context():
@@ -94,12 +92,18 @@ def update_user(id):
     return render_template('user_form.html', form=form)
 
 
-@app.route('/delete/<int:id>')
+@app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete_user(id):
     user = User.query.get_or_404(id)
-    db.session.delete(user)
-    db.session.commit()
-    return redirect(url_for('get_users'))
+    if request.method == 'POST':
+        # If the form is submitted, delete the user
+        db.session.delete(user)
+        db.session.commit()
+        flash("User deleted successfully.", "success")
+        return redirect(url_for('get_users'))
+
+    # Render the confirmation template
+    return render_template('user_confirm_delete.html', user=user)
 
 if __name__ == '__main__':
     app.run(debug=True)
