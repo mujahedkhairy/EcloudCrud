@@ -1,6 +1,3 @@
-from django import forms
-from .models import User
-
 
 from django import forms
 from .models import User
@@ -8,10 +5,10 @@ from .models import User
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'password']  # Include the fields you need
+        fields = ['username', 'password']
 
     def __init__(self, *args, **kwargs):
-        self.instance = kwargs.get('instance')  # Save the instance
+        self.instance = kwargs.get('instance')
         super().__init__(*args, **kwargs)
 
     def clean_username(self):

@@ -43,9 +43,7 @@ class UserUpdateView(UpdateView):
     success_url = reverse_lazy('get_users')
 
     def form_valid(self, form):
-        # Save the form without hashing the password
         user = form.save(commit=False)
-        # If a new password is provided, update it directly
         if form.cleaned_data['password']:
             user.password = form.cleaned_data['password']
         user.save()
@@ -75,8 +73,8 @@ class LoginView(FormView):
         try:
             user = User.objects.get(username=username)
             if user.password == password:
-                user.active = True  # Set user active status
-                user.save()  # Save the updated user status
+                user.active = True
+                user.save()
                 messages.success(self.request, f"{user.username} logged in successfully.")
                 return redirect(self.get_success_url())
             else:

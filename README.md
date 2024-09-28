@@ -32,5 +32,5 @@ This repository contains two CRUD applications: one built with Flask and the oth
    ```bash
    git clone https://github.com/mujahedkhairy/EcloudCrud.git
    cd EcloudCrud
-
+   
 ### Each application directory contains its own README file with detailed instructions on how to install dependencies and run the respective app. Please refer to these files for specific setup instructions.
