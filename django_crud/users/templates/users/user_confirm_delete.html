@@ -5,50 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm Delete User</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #dddddd;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            margin-bottom: 20px;
-        }
-        p {
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #ff4d4d;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #cc0000;
-        }
-        a {
-            margin-left: 10px;
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        a:hover {
-            color: #0056b3;
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
     <h1>Confirm Delete User</h1>
     <p>Are you sure you want to delete the user "{{ user.username }}"?</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes, delete</button>
+        <button type="submit" class="danger">Yes, delete</button>
         <a href="{% url 'get_users' %}">Cancel</a>
     </form>
 </body>

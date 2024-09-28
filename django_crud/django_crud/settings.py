@@ -71,6 +71,9 @@ TEMPLATES = [
         },
     },
 ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Add your static directory
+]
 
 WSGI_APPLICATION = "django_crud.wsgi.application"
 
